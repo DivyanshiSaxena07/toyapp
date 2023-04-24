@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main class="tm-main">
+        <div class="row">
+<%productList.forEach(product=>{%>
+<div class="carg ml-3" style="width:270px">
+    <img class="card-img-top" src="/images/<%=product.productImage%>" alt="Card image" style="width:100%; height: 200px;">
+    <div class="card-body">
+        <h4 class="card-title"><%=product.productName%><a href="#" class="btn text-right">View more</a></h4> 
+        <a onclick="addCart('<%=product._id%>')" class="btn btn-outline-primary text-left">Add To Cart</a>
+        <a href="#" class="btn btn-primary text-left">Buy now</a>
+     </div>
+    </div>
+<%}) %> 
+        </div>
+        <script>
+            function addCart(productId){
+                const xhttp=new XMLHttpRequest();
+                xhttp.open('GET','/cart/addToCart/'+productId,true);
+                xhttp.send();
+                xhttp.onreadystatechange=function(){
+                    if(xhttp.readyState==4){
+                        let response=xhttp.responseText;
+                        response=JSON.parse(response);
+                        alert(response.message);
+                    }
+                }
+            }
+        </script>
+    </main>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/templatemo-script.js"></script>
+</body>
+</html>

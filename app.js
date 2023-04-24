@@ -22,7 +22,7 @@ app.use(session({secret: 'dadereccvdreeer'}));
 
 // http://loalhost:3000/category/list --> GET
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb+srv://meanstack:mean123@cluster0.dkefj.mongodb.net/toysdb?retryWrites=true&w=majority',err=>{
+mongoose.connect('mongodb+srv://divyanshi:root@cluster.1wtwgej.mongodb.net/shoeApp?retryWrites=true&w=majority',err=>{
     if(err)
      console.log(err);
     else{
@@ -37,7 +37,7 @@ mongoose.connect('mongodb+srv://meanstack:mean123@cluster0.dkefj.mongodb.net/toy
         app.use("/user",userRouter);
         app.use("/admin",adminRouter);
         app.use("/cart",cartRouter);
-        app.listen(3000,()=>{
+        app.listen(5000,()=>{
             console.log("server started....");
         });
     } 
